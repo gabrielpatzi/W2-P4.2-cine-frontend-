@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Sala oscura */
+  --bg: #0B0B0F;
+  --surface: #15141B;
+  --surface-raised: #1C1A24;
+  --line: #2B2933;
+
+  /* Cortina / butacas */
+  --accent: #E63946;
+  --accent-dim: #8A2530;
+
+  /* Marquesina / luz ámbar */
+  --marquee: #F4B41A;
+
+  /* Texto */
+  --ink: #F2F0E9;
+  --ink-dim: #9A96A3;
+  --ink-faint: #5E5A68;
+
+  /* Estados de asiento */
+  --seat-free: #2E8B57;
+  --seat-free-bg: #16241C;
+  --seat-taken: #4A4854;
+
+  --font-display: 'Anton', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.error {
+  @apply text-sm mt-1;
+  color: var(--accent);
+}
+
+/* Recorte tipo entrada de cine / marquesina, esquina superior derecha cortada */
+.ticket-corner {
+  clip-path: polygon(0 0, 92% 0, 100% 8%, 100% 100%, 0 100%);
+}
+
+/* Perforado de stub de ticket */
+.ticket-stub::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: var(--bg);
+  border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-flicker {
+    animation: flicker 4s infinite;
+  }
+}
+
+@keyframes flicker {
+  0%, 96%, 100% { opacity: 1; }
+  97% { opacity: 0.7; }
+  98% { opacity: 1; }
+  99% { opacity: 0.85; }
+}

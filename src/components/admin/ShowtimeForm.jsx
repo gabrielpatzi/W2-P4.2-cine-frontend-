@@ -32,8 +32,8 @@ const ShowtimeForm = ({ funcion, peliculas = [], salas = [], onSubmit, enviando 
     if (funcion) {
       const momentoInicio = moment(funcion.fecha_hora_inicio)
       reset({
-        peliculaId: funcion.peliculaId ?? funcion.pelicula?.id,
-        salaId: funcion.salaId ?? funcion.sala?.id,
+        peliculaId: Number(funcion.peliculaId ?? funcion.pelicula?.id),
+        salaId: Number(funcion.salaId ?? funcion.sala?.id),
         precio: funcion.precio,
         fecha: momentoInicio.format('YYYY-MM-DD'),
         hora: momentoInicio.format('HH:mm'),
@@ -44,8 +44,8 @@ const ShowtimeForm = ({ funcion, peliculas = [], salas = [], onSubmit, enviando 
   const submitForm = (datos) => {
     setErrorServidor('')
     const payload = {
-      peliculaId: datos.peliculaId,
-      salaId: datos.salaId,
+      peliculaId: Number(datos.peliculaId),
+      salaId: Number(datos.salaId),
       precio: datos.precio,
       fecha_hora_inicio: toIsoDateTime(datos.fecha, datos.hora),
     }

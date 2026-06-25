@@ -28,8 +28,8 @@ const ReservationConfirmPage = () => {
     setEnviando(true)
     setError('')
     reservationsService.create({
-      funcionId,
-      asientoIds: asientos.map((a) => a.id),
+      funcionId: Number(funcionId),
+      asientoIds: asientos.map((a) => Number(a.id)),
     })
       .then(() => {
         navigate('/mis-reservas')
